@@ -28,7 +28,7 @@ on:
         required: false
       GITHUBRELEASE:
         description: "是否上传到Github Release | UPLOAD ROM TO GITHUB RELEASE"
-        default: FALSE
+        default: TRUE
         required: false
 
 jobs:
