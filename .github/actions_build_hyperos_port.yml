@@ -1,15 +1,17 @@
-name: actions_build_hyperos_port
+name: actions_build_hyperos_port_mi10
 on:
   workflow_dispatch:
     inputs:
       STOCK_URL:
         description: "待操作的底包/xiaomi.eu底包下载地址 | BASEROM DIRECT DOWNLOAD LINK(XIAOMI.EU or CN OFFICIAL ROM)"
         required: true
-        default: https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.5.0.TJBCNXM/miui_UMI_OS1.0.5.0.TJBCNXM_d01651ed86_13.0.zip
+        default: https://sourceforge.net/projects/xiaomi-eu-multilang-miui-roms/files/xiaomi.eu/HyperOS-STABLE-RELEASES/HyperOS1.0/xiaomi.eu_PERIDOT_OS1.0.18.0.UNPCNXM_14.zip/download
+        #default: https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.18.0.UNPCNXM/miui_PERIDOT_OS1.0.18.0.UNPCNXM_85e409bd49_14.0.zip
       PORT_URL:
         description: "待操作的移植包下载地址 | PORTROM DIRECT DOWNLOAD LINK(XIAOMI.EU OR CN OFFICIAL ROM)"
         required: true
-        default: https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.23.0.UNACNXM/miui_AURORA_OS1.0.23.0.UNACNXM_9bb4b476f4_14.0.zip
+        default: https://bn.d.miui.com/OS2.0.13.0.VNACNXM/aurora-ota_full-OS2.0.13.0.VNACNXM-user-15.0-cc9c5b9dc1.zip
+        #default: https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.23.0.UNACNXM/miui_AURORA_OS1.0.23.0.UNACNXM_9bb4b476f4_14.0.zip
       PACK_TYPE:
         description: "打包类型（EXT/EROFS) | PACKING TYPE(EXT/EROFS), EROFS BY DEFAULT"
         default: EXT
