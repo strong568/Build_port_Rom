@@ -65,7 +65,7 @@ jobs:
           base64 -d token.txt > ~/.config/rclone/rclone.conf
       - name: 5. 开始移植 | START PORTING
         run: |
-          git clone https://github.com/toraidl/hyperos_port.git -b test
+          git clone https://github.com/strong568/hyperos_port.git -b test
           cd hyperos_port
           sudo chmod -R a+x . 
           mkdir tmp
