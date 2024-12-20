@@ -66,7 +66,7 @@ jobs:
           mkdir tmp
           #rclone sync -P onedrive:/ROM_FILES/ tmp/
           mkdir -p devices/peridot
-          cp -rfv tmp/BT*.zip devices/peridot
+          #cp -rfv tmp/BT*.zip devices/peridot
           
           if [[ ${{ github.event.inputs.PACK_TYPE }} == "EROFS" ]]; then
               sed -i "s/repack_with_ext4=true/repack_with_ext4=false/" bin/port_config
