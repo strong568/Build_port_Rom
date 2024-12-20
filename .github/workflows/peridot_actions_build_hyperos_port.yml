@@ -27,7 +27,7 @@ on:
         options:
         - TRUE
         - FALSE
-        required: false
+        required: true
       ONEDRIVE:
         description: "是否上传到OneDrive| PUSH ROM TO ONEDRIVE"
         default: FALSE
