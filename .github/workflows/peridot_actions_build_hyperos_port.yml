@@ -10,7 +10,8 @@ on:
       PORT_URL:
         description: "待操作的移植包下载地址 | PORTROM DIRECT DOWNLOAD LINK(XIAOMI.EU OR CN OFFICIAL ROM)"
         required: true
-        default: https://bn.d.miui.com/OS2.0.13.0.VNACNXM/aurora-ota_full-OS2.0.13.0.VNACNXM-user-15.0-cc9c5b9dc1.zip
+        default: https://sourceforge.net/projects/xiaomi-eu-multilang-miui-roms/files/xiaomi.eu/HyperOS-STABLE-RELEASES/HyperOS2.0/xiaomi.eu_AURORA_OS2.0.13.0.VNACNXM_15.zip/download
+        #default: https://bn.d.miui.com/OS2.0.13.0.VNACNXM/aurora-ota_full-OS2.0.13.0.VNACNXM-user-15.0-cc9c5b9dc1.zip
         #default: https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS1.0.23.0.UNACNXM/miui_AURORA_OS1.0.23.0.UNACNXM_9bb4b476f4_14.0.zip
       PACK_TYPE:
         description: "打包类型（EXT/EROFS) | PACKING TYPE(EXT/EROFS), EROFS BY DEFAULT"
@@ -21,9 +22,13 @@ on:
         - EXT
         required: true
       ENCRYPTION:
-        description: "是否解密data分区(TRUE/FALSE)，默认加密 | FBE DECRYPTION OR NOT, FBE ENABLED BY DEFAULT"
-        default: FALSE
-        required: false
+        description: "是否解密data分区(TRUE/FALSE)，默认加密 | FBE DECRYPTION OR NOT, Data DECRYPTION BY DEFAULT"
+        default: TRUE
+        type: choice
+        options:
+        - TRUE
+        - FALSE
+        required: true
       ONEDRIVE:
         description: "是否上传到OneDrive| PUSH ROM TO ONEDRIVE"
         default: FALSE
@@ -89,7 +94,7 @@ jobs:
           sudo split -b 1536M -d "$GITHUB_WORKSPACE"/hyperos_port/out/$ROM_FILE $ROM_FILE
           ls -al "$GITHUB_WORKSPACE"/hyperos_port/GithubRelease/
      
-      - name: 9. 上传到OneDrive | PUSH ROM TO ONEDRIVE
+      - name: 6. 上传到OneDrive | PUSH ROM TO ONEDRIVE
         if:  ${{  github.event.inputs.ONEDRIVE == 'TRUE' }}
         run: |
             rclone sync -P "$GITHUB_WORKSPACE"/hyperos_port/out/${{ env.ROM_FILE }} onedrive:/ROM/github-actions/$OS_VERSION
@@ -97,7 +102,7 @@ jobs:
             touch file.log
             echo -e "Onedrive下载链接 | Onedrive alternate download link: \n $SHARE_LINK" > file.log
      
-      - name: 10. 上传到Github Release| UPLOAD ROM TO GITHUB RELEASAE
+      - name: 8. 上传到Github Release| UPLOAD ROM TO GITHUB RELEASAE
         if: ${{  github.event.inputs.GITHUBRELEASE == 'TRUE' }}
         uses: ncipollo/release-action@main
         with:
