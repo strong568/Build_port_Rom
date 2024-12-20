@@ -21,8 +21,12 @@ on:
         - EXT
         required: true
       ENCRYPTION:
-        description: "是否解密data分区(TRUE/FALSE)，默认加密 | FBE DECRYPTION OR NOT, FBE ENABLED BY DEFAULT"
-        default: FALSE
+        description: "是否解密data分区(TRUE/FALSE)，默认加密 | FBE DECRYPTION OR NOT, Data DECRYPTION BY DEFAULT"
+        default: TRUE
+        type: choice
+        options:
+        - TRUE
+        - FALSE
         required: false
       ONEDRIVE:
         description: "是否上传到OneDrive| PUSH ROM TO ONEDRIVE"
